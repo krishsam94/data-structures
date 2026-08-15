@@ -1,0 +1,5 @@
+/.idea/
+bin
+# Ignore build outputs
+/dist/
+/build/
