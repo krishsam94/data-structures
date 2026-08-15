@@ -10,7 +10,7 @@ public class Ex3ReversingArr {
 
     public static void reverseArray(int[] arr) {
         // Reverse array by swapping elements from both ends
-        for(int strtIdx = 0; strtIdx < arr.length / 2; strtIdx++) {
+        for (int strtIdx = 0; strtIdx < arr.length / 2; strtIdx++) {
             int temp = arr[strtIdx];
             int endIndex = arr.length - 1;
             arr[strtIdx] = arr[endIndex - strtIdx];
