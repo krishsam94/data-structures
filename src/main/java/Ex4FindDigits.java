@@ -1,8 +1,3 @@
-import org.apache.commons.lang.StringUtils;
-
-import java.time.LocalDateTime;
-import java.util.Scanner;
-
 public class Ex4FindDigits {
     public static void main(String[] args) {
         int[] arr = {21, 9, 5734, 32423, 323};
