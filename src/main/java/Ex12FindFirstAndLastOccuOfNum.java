@@ -1,4 +1,5 @@
 public class Ex12FindFirstAndLastOccuOfNum {
+    // https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/
     public static void main(String[] args) {
         int[] nums = {5, 7, 7, 8, 8, 10};
         int[] nums2 = {7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9};
