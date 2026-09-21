@@ -14,9 +14,10 @@ public class Ex16SearchInRotatedArray {
         while(start != end) {
             int mid = start + (end - start)/2;
             if (nums[mid] == target) return mid;
-            if(nums[mid] > nums[mid+1]){
-                end = mid;
-            } else if(nums[mid] < nums[start]){
+            if(nums[mid] > nums[mid+1]){ // if mid is > mid + 1, then mid is Largest Number
+                start = mid;
+                break;
+            } else if(nums[mid] < nums[start]) { // if Mid is < start, then largest should lie between start & mid
                 end = mid;
             } else {
                 start = mid + 1;
