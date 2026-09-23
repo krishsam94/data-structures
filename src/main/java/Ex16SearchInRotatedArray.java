@@ -10,6 +10,10 @@ public class Ex16SearchInRotatedArray {
         int start = 0;
         int end = nums.length -1;
         int largestIdx = 0;
+        if (nums[start] == target)
+            return start;
+        if (nums[end] == target)
+            return end;
         // find largest number first
         while(start != end) {
             int mid = start + (end - start)/2;
@@ -25,22 +29,19 @@ public class Ex16SearchInRotatedArray {
         }
         largestIdx = start;
         if(nums[largestIdx] == target) return largestIdx;
-        // Search in first part of array till largest number
-        start = 0;
-        end = largestIdx - 1;
-        while(start <= end) {
-            int mid = start + (end - start)/2;
-            if(nums[mid] == target) {
-                return mid;
-            } else if(nums[mid] > target) {
-                end = mid -1;
-            } else {
-                start = mid + 1;
-            }
+        // if first Ele is greater than target, then result lies in second part of array
+        if(nums[0] > target) {
+            // Search in second part, starting from largestIdx + 1
+            start = largestIdx + 1;
+            end = nums.length -1;
+        } else {
+            // Search in first part of array till largest number
+            start = 0;
+            end = largestIdx - 1;
         }
-        // Search in second part, starting from largestIdx + 1
-        start = largestIdx + 1;
-        end = nums.length -1;
+        return doBinarySearch(nums, target, start, end);
+    }
+    static int doBinarySearch(int[] nums, int target, int start, int end) {
         while(start <= end) {
             int mid = start + (end - start)/2;
             if(nums[mid] == target) {
