@@ -8,9 +8,9 @@ public class Ex27FindLargestInSplitArr {
     static int splitArray(int[] nums, int k) {
         int max = 0;
         int sum = 0;
-        for(int i=0; i<nums.length; i++) {
-            if(nums[i] > max) max = nums[i];
-            sum += nums[i];
+        for (int num : nums) {
+            if (num > max) max = num;
+            sum += num;
         }
         // if k is equal to length of arr, then max of array is answer
         if(k == nums.length) {
@@ -55,6 +55,50 @@ public class Ex27FindLargestInSplitArr {
                 }
             }
             return maxInArr;
+        }
+    }
+    // Without temp variable
+    static int splitArray2(int[] nums, int k) {
+        int max = 0;
+        int totalSum = 0;
+        for (int num : nums) {
+            if (num > max) max = num;
+            totalSum += num;
+        }
+        // if k is equal to length of arr, then max of array is answer
+        if(k == nums.length) {
+            return max;
+        } else if(k == 1) {
+            // if k is equal to 1, then totalSum of all is answer
+            return totalSum;
+        } else {
+            // do Binary Search
+            int start = max;
+            int end = totalSum;
+            while(start <= end) {
+                int arrSum = 0;
+                int pieces = 1;
+                int mid = start + (end - start)/2;
+                int idx = 0;
+                while(idx < nums.length) {
+                    // Validate if arrSum + next num in array is less than mid, if yes add else create new piece
+                    if((arrSum + nums[idx]) <= mid) {
+                        arrSum += nums[idx];
+                    } else {
+                        pieces++;
+                        arrSum = nums[idx];
+                    }
+                    idx++;
+                }
+                if (start == end) {
+                    return start;
+                } else if(pieces <= k) {
+                    end = mid;
+                } else {
+                    start = mid+1;
+                }
+            }
+            return start;
         }
     }
 }
